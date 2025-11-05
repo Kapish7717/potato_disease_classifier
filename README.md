@@ -1,22 +1,24 @@
-Potato Disease Detection System
+# Potato Disease Detection System
 
-Technologies: Python, TensorFlow, FastAPI, Docker
+**Technologies:** Python, TensorFlow, FastAPI, Docker
 
 A deep learning application to detect and classify potato leaf diseases (Early Blight, Late Blight, Healthy) using a custom CNN model, served via TensorFlow Serving and accessible through a FastAPI API.
 
-Features
+---
 
-Custom CNN model trained from scratch for potato leaf disease classification.
+## Features
 
-Image preprocessing and data augmentation for robust predictions.
+* Custom CNN model trained from scratch for potato leaf disease classification.
+* Image preprocessing and data augmentation for robust predictions.
+* Achieved **90%+ accuracy** on test data.
+* Real-time inference through FastAPI endpoint.
+* Deployment using **TensorFlow Serving** inside Docker for portability.
 
-Achieved 90%+ accuracy on test data.
+---
 
-Real-time inference through FastAPI endpoint.
+## Folder Structure
 
-Deployment using TensorFlow Serving inside Docker for portability.
-
-Folder Structure
+```
 potato-disease-classifier/
 │
 ├── app/                  # FastAPI application
@@ -34,44 +36,57 @@ potato-disease-classifier/
 ├── requirements.txt      # Python dependencies
 ├── models.config         # TensorFlow Serving config
 └── README.md             # Project documentation
+```
 
-Installation
+---
 
-Clone the repository
+## Installation
 
+1. **Clone the repository**
+
+```bash
 git clone https://github.com/<your-username>/potato-disease-classifier.git
 cd potato-disease-classifier
+```
 
+2. **Install dependencies**
 
-Install dependencies
-
+```bash
 pip install -r requirements.txt
+```
 
+3. **Run FastAPI**
 
-Run FastAPI
-
+```bash
 uvicorn app.main:app --reload
+```
 
+4. **Start TensorFlow Serving (Docker)**
 
-Start TensorFlow Serving (Docker)
-
+```bash
 docker run -t --rm -p 8501:8501 \
   -v "${PWD}/models:/models/my_model" \
   -v "${PWD}/models.config:/models/models.config" \
   tensorflow/serving \
   --model_config_file=/models/models.config
+```
 
-Usage
-Predict via API
+---
+
+## Usage
+
+### Predict via API
 
 Send a POST request to the FastAPI endpoint:
 
+```bash
 curl -X POST http://localhost:8000/predict \
      -F "file=@leaf_image.jpg"
+```
 
+**Response example:**
 
-Response example:
-
+```json
 {
   "predictions": [
     {
@@ -80,9 +95,11 @@ Response example:
     }
   ]
 }
+```
 
-Acknowledgements
+---
 
-TensorFlow documentation: https://www.tensorflow.org/
+## Acknowledgements
 
-FastAPI documentation: https://fastapi.tiangolo.com/
+* TensorFlow documentation: [https://www.tensorflow.org/](https://www.tensorflow.org/)
+* FastAPI documentation: [https://fastapi.tiangolo.com/](https://fastapi.tiangolo.com/)
