@@ -45,8 +45,8 @@ potato-disease-classifier/
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/<your-username>/potato-disease-classifier.git
-cd potato-disease-classifier
+git clone https://github.com/Kapish7717/potato_disease_classifier.git
+cd potato_disease_classifier
 ```
 
 2. **Install dependencies**
